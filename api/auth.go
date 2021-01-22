@@ -31,14 +31,12 @@ func connetdb() (db *sql.DB) {
 	return db
 }
 
-// AuthRouters are the collection of all URLs for the Auth App.
 func AuthRouters(r *mux.Router) {
 	r.HandleFunc("/api/v1/user/login", LoginUserEndpoint).Methods("POST")
 	r.HandleFunc("/register", RegisterEndpoint).Methods("POST")
 	r.HandleFunc("/login", Login).Methods("GET")
 }
 
-// Login function is to render the homepage page.
 func Login(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/login.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
@@ -59,7 +57,6 @@ type jsonResponse struct {
 	AlertType  string `json:"alertType"`
 }
 
-// LoginUserEndpoint is to validate the user's login credential
 func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -112,7 +109,6 @@ func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 		"AlertType": "success", "redirectTo": "` + config.SiteBaseURL + `dashboard", "eUsr": "` + encryptedUserName + `", "expDays": "` + expDays + `" }`))
 }
 
-// RegisterEndpoint function is to render the Account SignUp page.
 func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)

@@ -56,7 +56,6 @@ func main() {
 	r.Use(loggingMiddleware)
 	r.Use(mux.CORSMethodMiddleware(r))
 
-	// This will serve the files under http://localhost:8081/static/<filename>
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir(dir))))
 
 	// Initialize the APIs here

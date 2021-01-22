@@ -36,7 +36,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
-// AccountSignup function is to render the signup page.
 func AccountSignup(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/account-sign-up.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
@@ -50,7 +49,6 @@ func AccountSignup(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
-// PasswordRecover password is to render the recover page.
 func PasswordRecover(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/account-password-recover.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
@@ -64,14 +62,12 @@ func PasswordRecover(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
-// ArticlesCategoryHandler ...
 func ArticlesCategoryHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Category: %v\n", vars["category"])
 }
 
-// ProductInfo ...
 func ProductInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	w.WriteHeader(http.StatusOK)
