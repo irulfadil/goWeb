@@ -143,14 +143,13 @@
                 rememberMe: new String(rememberMe)
              };
             var data = JSON.stringify(obj);
-            
             $.ajax({
                 method: "POST",
                 headers: {
                     'X-CSRF-TOKEN':csrfToken,
                     'Content-Type':'application/json'
                 },
-                url: BASE_URL+'register',
+                url: BASE_URL+'api/v1/user/register',
                 data: data,
                 cache: false,
                 dataType: "json",

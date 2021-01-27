@@ -115,6 +115,7 @@
             if (response.IsSuccess === "false") {
                 Swal.fire(response.AlertType, response.AlertTitle, response.AlertMsg);
             }else{
+                console.log(response);
                 Swal.fire(response.AlertTitle, response.AlertMsg, response.AlertType);
             }
           }

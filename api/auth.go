@@ -5,18 +5,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"goweb/config"
-	"html/template"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/csrf"
+	_ "github.com/go-sql-driver/mysql" // go-sql-driver/mysql
 	"github.com/gorilla/mux"
 	"github.com/itrepablik/itrlog"
 	"github.com/itrepablik/tago"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var db *sql.DB
@@ -31,23 +30,22 @@ func connetdb() (db *sql.DB) {
 	return db
 }
 
-func AuthRouters(r *mux.Router) {
-	r.HandleFunc("/api/v1/user/login", LoginUserEndpoint).Methods("POST")
-	r.HandleFunc("/register", RegisterEndpoint).Methods("POST")
-	r.HandleFunc("/login", Login).Methods("GET")
+// HashPassword this is Generate password
+func HashPassword(password string) (string, error) {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	return string(bytes), err
 }
 
-func Login(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/login.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
+// CheckPasswordHash this is comparatepassword
+func CheckPasswordHash(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
+}
 
-	data := contextData{
-		"PageTitle":    "Login - " + config.SiteShortName,
-		"PageMetaDesc": config.SiteShortName + " account, sign in to access your account.",
-		"CanonicalURL": r.RequestURI,
-		"CsrfToken":    csrf.Token(r),
-		"Settings":     config.SiteSettings,
-	}
-	tmpl.Execute(w, data)
+// AuthRouters function
+func AuthRouters(r *mux.Router) {
+	r.HandleFunc("/api/v1/user/login", LoginUserEndpoint).Methods("POST")
+	r.HandleFunc("/api/v1/user/register", RegisterEndpoint).Methods("POST")
 }
 
 type jsonResponse struct {
@@ -57,6 +55,7 @@ type jsonResponse struct {
 	AlertType  string `json:"alertType"`
 }
 
+// LoginUserEndpoint function
 func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -88,7 +87,7 @@ func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if len(strings.TrimSpace(password)) == 0 {
+	if len(password) == 0 {
 		w.Write([]byte(`{ "IsSuccess": "false", "AlertTitle": "Password is Required BK", "AlertMsg": "Please enter your password.", "AlertType": "error" }`))
 		return
 	}
@@ -105,10 +104,32 @@ func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 		itrlog.Error(err)
 	}
 
+	dbCon := connetdb()
+	var hashPassword string
+	err = dbCon.QueryRow("SELECT password FROM users WHERE username = ?", userName).Scan(&hashPassword)
+	if err != nil {
+		fmt.Println("Error selecting encrypt in db by username")
+		w.Write([]byte(`{ "isSuccess": "false", "AlertTitle": "Login Failed", "AlertMsg": "Please check Username and Password again",
+		"AlertType": "error"}`))
+		return
+	}
+	fmt.Println("inputan password:", password)
+	fmt.Println("Encrypted password:", hashPassword)
+
+	match := CheckPasswordHash(password, hashPassword)
+	fmt.Println("Match :", match)
+
+	if match != true {
+		w.Write([]byte(`{ "isSuccess": "false", "AlertTitle": "Login Failed", "AlertMsg": "Please check Username and Password again",
+		"AlertType": "error"}`))
+		return
+	}
 	w.Write([]byte(`{ "isSuccess": "true", "AlertTitle": "Login Successful", "AlertMsg": "Your account has been verified and it's successfully logged-in.",
-		"AlertType": "success", "redirectTo": "` + config.SiteBaseURL + `dashboard", "eUsr": "` + encryptedUserName + `", "expDays": "` + expDays + `" }`))
+			"AlertType": "success", "redirectTo": "` + config.SiteBaseURL + `dashboard", "eUsr": "` + encryptedUserName + `", "expDays": "` + expDays + `" }`))
+
 }
 
+// RegisterEndpoint function
 func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -208,15 +229,17 @@ func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 	}
 
 	dbCon := connetdb()
-	encrypted := encryptedUserName
-	insert, err := dbCon.Prepare("INSERT INTO users (username, password, country, email, encrypted, first_name, last_name," +
+	eUsr := encryptedUserName
+	password, _ = HashPassword(password)
+
+	insert, err := dbCon.Prepare("INSERT INTO users (username, password, country, email, eUsr, first_name, last_name," +
 		"is_superuser, is_admin, date_joined, is_active) VALUES (?,?,?,?,?,?,?,?,?,?,?)")
 
 	if err != nil {
 		itrlog.Error(err)
 	}
 
-	insert.Exec(username, password, country, email, encrypted, "irul", "fadil", "super", "admin", time.Now(), 0)
+	insert.Exec(username, password, country, email, eUsr, "irul", "fadil", "super", "admin", time.Now(), 0)
 	defer insert.Close()
 
 	w.Write([]byte(`{"IsSuccess":"true", "AlertTitle":"Register Successful", "AlertMsg":"Your registed has been successful, please login to next aplication", 

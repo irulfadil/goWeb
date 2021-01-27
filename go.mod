@@ -9,4 +9,5 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/itrepablik/itrlog v1.0.3
 	github.com/itrepablik/tago v1.0.3
+	golang.org/x/crypto v0.0.0-20190510104115-cbcb75029529
 )

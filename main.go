@@ -51,6 +51,15 @@ func main() {
 		handlers.AllowedOrigins([]string{"*"}), // for dev only
 	)
 
+	// this is to the CORS config whith CORS library Golang dan echo
+	// cors := cros.new(cros.options{
+	// 	AllowedOrigins([]string{"*"}),
+	// 	AllowedHeaders([]string{"Content-Type", "X-CSRF-Token"}),
+	// 	AllowedMethods([]string{"OPTIONS", "GET", "POST", "PUT", "HEAD"}),
+	// 	Debug : true, //aktifkan properti ini pada stage development, agar banyak informasi log tambahan bisa muncul
+	// })
+	// e.Use(echo.WrapMiddleware(cros.Handler))
+
 	r.Use(cors)
 	r.Use(csrfMiddleware)
 	r.Use(loggingMiddleware)
@@ -63,7 +72,8 @@ func main() {
 	api.AuthRouters(r) // URLs for the auth app.
 
 	srv := &http.Server{
-		Addr: "127.0.0.1:8081",
+		Addr: "127.0.0.1:8081", //for local
+		// Addr: "139.162.59.254:8081", //prod deploy
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
