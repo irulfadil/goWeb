@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"goweb/config"
+	"goWeb/config"
 	"html/template"
 	"net/http"
 

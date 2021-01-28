@@ -4,7 +4,8 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"goweb/config"
+	"goWeb/config"
+	"goWeb/models"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -21,7 +22,7 @@ import (
 var db *sql.DB
 var err error
 
-func connetdb() (db *sql.DB) {
+func connect() (db *sql.DB) {
 	dbdrive := "mysql"
 	db, err := sql.Open(dbdrive, config.DBConStr)
 	if err != nil {
@@ -46,6 +47,7 @@ func CheckPasswordHash(password, hash string) bool {
 func AuthRouters(r *mux.Router) {
 	r.HandleFunc("/api/v1/user/login", LoginUserEndpoint).Methods("POST")
 	r.HandleFunc("/api/v1/user/register", RegisterEndpoint).Methods("POST")
+	r.HandleFunc("/api/v1/user/getUser", GetAlluser).Methods("GET")
 }
 
 type jsonResponse struct {
@@ -104,7 +106,7 @@ func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 		itrlog.Error(err)
 	}
 
-	dbCon := connetdb()
+	dbCon := connect()
 	var hashPassword string
 	err = dbCon.QueryRow("SELECT password FROM users WHERE username = ?", userName).Scan(&hashPassword)
 	if err != nil {
@@ -140,21 +142,21 @@ func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 		panic(errBody.Error())
 	}
 
-	keyVals := make(map[string]string)
-	json.Unmarshal(body, &keyVals)
+	users := make(map[string]string)
+	json.Unmarshal(body, &users)
 
-	username := strings.TrimSpace(keyVals["username"])
-	password := keyVals["password"]
-	confirmPassword := keyVals["confirmPassword"]
-	email := strings.TrimSpace(keyVals["email"])
-	country := keyVals["country"]
+	username := strings.TrimSpace(users["username"])
+	password := users["password"]
+	confirmPassword := users["confirmPassword"]
+	email := strings.TrimSpace(users["email"])
+	country := users["country"]
 	// firstName := keyVals["first_name"]
 	// lastName := keyVals["last_name"]
 	// isSuperuser := keyVals["is_superuser"]
 	// isAdmin := keyVals["is_admin"]
 	// dateJoined := keyVals["date_joined"]
 	// isActive := keyVals["is_active"]
-	rememberMe, _ := strconv.ParseBool(keyVals["rememberMe"])
+	rememberMe, _ := strconv.ParseBool(users["rememberMe"])
 
 	fmt.Print("Username:", username)
 	fmt.Print("Password:", password)
@@ -228,7 +230,7 @@ func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 		itrlog.Error(err)
 	}
 
-	dbCon := connetdb()
+	dbCon := connect()
 	eUsr := encryptedUserName
 	password, _ = HashPassword(password)
 
@@ -245,4 +247,32 @@ func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`{"IsSuccess":"true", "AlertTitle":"Register Successful", "AlertMsg":"Your registed has been successful, please login to next aplication", 
 					"AlertType":"success", "redirectTo":"` + config.SiteBaseURL + `", "eUsr":"` + encryptedUserName + `", "expDays":"` + expDays + `"}`))
 
+}
+
+// GetAlluser this is funtion all data from database to endpoint
+func GetAlluser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	dbCon := connect()
+	stm := fmt.Sprintf("SELECT id, username, password, country, email, eUsr, first_name, last_name," +
+		"is_superuser, is_admin, date_joined, is_active FROM users")
+	rows, err := dbCon.Query(stm)
+	if err != nil {
+		fmt.Println("Error, Selecting in table")
+		return
+	}
+	defer rows.Close()
+
+	users := []models.Users{}
+
+	for rows.Next() {
+		var u models.Users
+		if err := rows.Scan(&u.ID, &u.Username, &u.Password, &u.Country, &u.Email, &u.Eusr, &u.FirstName, &u.LastName, &u.IsSuperuser, &u.IsAdmin, &u.DateJoined, &u.IsActive); err != nil {
+			return
+		}
+		users = append(users, u)
+	}
+	response, _ := json.Marshal(users)
+	w.Write(response)
 }
