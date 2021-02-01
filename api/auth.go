@@ -7,12 +7,14 @@ import (
 	"goWeb/config"
 	"goWeb/models"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql" // go-sql-driver/mysql
+	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
 	"github.com/itrepablik/itrlog"
 	"github.com/itrepablik/tago"
@@ -45,9 +47,10 @@ func CheckPasswordHash(password, hash string) bool {
 
 // AuthRouters function
 func AuthRouters(r *mux.Router) {
-	r.HandleFunc("/api/v1/user/login", LoginUserEndpoint).Methods("POST")
-	r.HandleFunc("/api/v1/user/register", RegisterEndpoint).Methods("POST")
+	r.HandleFunc("/api/v1/user/login", LoginUser).Methods("POST")
+	r.HandleFunc("/api/v1/user/register", Register).Methods("POST")
 	r.HandleFunc("/api/v1/user/getUser", GetAlluser).Methods("GET")
+	r.HandleFunc("/api/v1/user/uptUser/{id:[0-9]+}", UpdateUser).Methods("PUT")
 }
 
 type jsonResponse struct {
@@ -57,8 +60,8 @@ type jsonResponse struct {
 	AlertType  string `json:"alertType"`
 }
 
-// LoginUserEndpoint function
-func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
+// LoginUser function
+func LoginUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -131,8 +134,8 @@ func LoginUserEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// RegisterEndpoint function
-func RegisterEndpoint(w http.ResponseWriter, r *http.Request) {
+// Register function
+func Register(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -274,5 +277,42 @@ func GetAlluser(w http.ResponseWriter, r *http.Request) {
 		users = append(users, u)
 	}
 	response, _ := json.Marshal(users)
+	w.Write(response)
+}
+
+// UpdateUser this is function to update user table
+func UpdateUser(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id, err := strconv.Atoi(vars["id"])
+	if err != nil {
+		fmt.Println(w, http.StatusBadRequest, "Invalid Request ID")
+		return
+	}
+
+	var Users models.Users
+	decoder := json.NewDecoder(r.Body)
+	if err := decoder.Decode(&Users); err != nil {
+		fmt.Println(w, http.StatusBadRequest, "Invalid Request Payload")
+		return
+	}
+	defer r.Body.Close()
+
+	fmt.Println(Users)
+
+	Users.ID = id
+	dbCon := connect()
+	layoutDateTime := "2006-01-02 15:04:05"
+	stmt := fmt.Sprintf("UPDATE users SET username='%s', password='%s', country='%s', email='%s', eUsr='%s', first_name='%s', last_name='%s', is_superuser='%s', is_admin='%s', date_joined='%v', is_active='%s' WHERE id='%d'", Users.Username, Users.Password, Users.Country, Users.Email, Users.Eusr, Users.FirstName, Users.LastName, Users.IsSuperuser, Users.IsAdmin, time.Now().Format(layoutDateTime), Users.IsActive, Users.ID)
+	_, err = dbCon.Exec(stmt)
+	if err != nil {
+		log.Printf(err.Error())
+		return
+	}
+
+	response, _ := json.Marshal(Users)
+
+	w.Header().Set("X-Csrf-Token", csrf.Token(r))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 	w.Write(response)
 }

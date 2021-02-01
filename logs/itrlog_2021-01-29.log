@@ -1,0 +1,101 @@
+{"level":"info","ts":1611892102.5449,"msg":"Web server started at 2021-01-29 10:48:22.5328862 +0700 +07 m=+0.015631001"}
+{"level":"info","ts":1611892547.985725,"msg":"IP:/api/v1/user/getUser:2021-01-29 10:48:22.5328862 +0700 +07 m=+0.015631001"}
+{"level":"error","ts":1611892610.3562148,"msg":"http: Server closed"}
+{"level":"warn","ts":1611892610.8564355,"msg":"Server has been shutdown at 2021-01-29 10:48:22.5328862 +0700 +07 m=+0.015631001"}
+{"level":"info","ts":1611892650.0073884,"msg":"Web server started at 2021-01-29 10:57:30.0063872 +0700 +07 m=+0.040026101"}
+{"level":"error","ts":1611893929.2411547,"msg":"http: Server closed"}
+{"level":"warn","ts":1611893929.7416005,"msg":"Server has been shutdown at 2021-01-29 10:57:30.0063872 +0700 +07 m=+0.040026101"}
+{"level":"info","ts":1611894330.597023,"msg":"Web server started at 2021-01-29 11:25:30.5960223 +0700 +07 m=+0.009006101"}
+{"level":"info","ts":1611894341.4453504,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 11:25:30.5960223 +0700 +07 m=+0.009006101"}
+{"level":"error","ts":1611902393.0251055,"msg":"http: Server closed"}
+{"level":"warn","ts":1611902393.5251298,"msg":"Server has been shutdown at 2021-01-29 11:25:30.5960223 +0700 +07 m=+0.009006101"}
+{"level":"info","ts":1611902398.4377477,"msg":"Web server started at 2021-01-29 13:39:58.4367472 +0700 +07 m=+0.006004101"}
+{"level":"info","ts":1611902409.8126972,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 13:39:58.4367472 +0700 +07 m=+0.006004101"}
+{"level":"info","ts":1611902468.1066563,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 13:39:58.4367472 +0700 +07 m=+0.006004101"}
+{"level":"error","ts":1611902548.2867796,"msg":"http: Server closed"}
+{"level":"warn","ts":1611902548.787077,"msg":"Server has been shutdown at 2021-01-29 13:39:58.4367472 +0700 +07 m=+0.006004101"}
+{"level":"info","ts":1611902553.0362191,"msg":"Web server started at 2021-01-29 13:42:33.0352185 +0700 +07 m=+0.020011301"}
+{"level":"info","ts":1611902569.0712483,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 13:42:33.0352185 +0700 +07 m=+0.020011301"}
+{"level":"error","ts":1611904108.849586,"msg":"http: Server closed"}
+{"level":"warn","ts":1611904108.849586,"msg":"Server has been shutdown at 2021-01-29 13:42:33.0352185 +0700 +07 m=+0.020011301"}
+{"level":"info","ts":1611904114.3400662,"msg":"Web server started at 2021-01-29 14:08:34.3390656 +0700 +07 m=+0.010010601"}
+{"level":"info","ts":1611904130.6189878,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:08:34.3390656 +0700 +07 m=+0.010010601"}
+{"level":"error","ts":1611904930.6934114,"msg":"http: Server closed"}
+{"level":"warn","ts":1611904931.1935074,"msg":"Server has been shutdown at 2021-01-29 14:08:34.3390656 +0700 +07 m=+0.010010601"}
+{"level":"info","ts":1611904936.9929893,"msg":"Web server started at 2021-01-29 14:22:16.9919881 +0700 +07 m=+0.008009201"}
+{"level":"info","ts":1611904948.4079003,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:22:16.9919881 +0700 +07 m=+0.008009201"}
+{"level":"error","ts":1611905084.8861353,"msg":"http: Server closed"}
+{"level":"warn","ts":1611905084.8861353,"msg":"Server has been shutdown at 2021-01-29 14:22:16.9919881 +0700 +07 m=+0.008009201"}
+{"level":"info","ts":1611905089.273359,"msg":"Web server started at 2021-01-29 14:24:49.2723549 +0700 +07 m=+0.010008401"}
+{"level":"info","ts":1611905099.8513114,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:24:49.2723549 +0700 +07 m=+0.010008401"}
+{"level":"error","ts":1611905583.8918133,"msg":"http: Server closed"}
+{"level":"warn","ts":1611905584.3925138,"msg":"Server has been shutdown at 2021-01-29 14:24:49.2723549 +0700 +07 m=+0.010008401"}
+{"level":"info","ts":1611905589.6897964,"msg":"Web server started at 2021-01-29 14:33:09.6887953 +0700 +07 m=+0.008005001"}
+{"level":"info","ts":1611905593.3407903,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:33:09.6887953 +0700 +07 m=+0.008005001"}
+{"level":"error","ts":1611905834.0299132,"msg":"http: Server closed"}
+{"level":"warn","ts":1611905834.5302882,"msg":"Server has been shutdown at 2021-01-29 14:33:09.6887953 +0700 +07 m=+0.008005001"}
+{"level":"info","ts":1611905839.1785834,"msg":"Web server started at 2021-01-29 14:37:19.1655779 +0700 +07 m=+0.008008301"}
+{"level":"info","ts":1611905854.3526547,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:37:19.1655779 +0700 +07 m=+0.008008301"}
+{"level":"error","ts":1611905903.1057122,"msg":"http: Server closed"}
+{"level":"warn","ts":1611905903.6066027,"msg":"Server has been shutdown at 2021-01-29 14:37:19.1655779 +0700 +07 m=+0.008008301"}
+{"level":"info","ts":1611905908.2904088,"msg":"Web server started at 2021-01-29 14:38:28.2894087 +0700 +07 m=+0.004002701"}
+{"level":"info","ts":1611905920.061116,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:38:28.2894087 +0700 +07 m=+0.004002701"}
+{"level":"error","ts":1611905963.7040014,"msg":"http: Server closed"}
+{"level":"warn","ts":1611905963.7050028,"msg":"Server has been shutdown at 2021-01-29 14:38:28.2894087 +0700 +07 m=+0.004002701"}
+{"level":"info","ts":1611905976.4877105,"msg":"Web server started at 2021-01-29 14:39:36.4857091 +0700 +07 m=+0.009005201"}
+{"level":"info","ts":1611905979.48177,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:39:36.4857091 +0700 +07 m=+0.009005201"}
+{"level":"error","ts":1611906168.596009,"msg":"http: Server closed"}
+{"level":"warn","ts":1611906169.0968928,"msg":"Server has been shutdown at 2021-01-29 14:39:36.4857091 +0700 +07 m=+0.009005201"}
+{"level":"info","ts":1611906175.3667548,"msg":"Web server started at 2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906184.9996321,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906348.0313334,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906353.3514593,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906355.2946832,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906387.198574,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906389.529308,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"error","ts":1611906412.9033139,"msg":"http: Server closed"}
+{"level":"warn","ts":1611906413.4042726,"msg":"Server has been shutdown at 2021-01-29 14:42:55.365754 +0700 +07 m=+0.007005501"}
+{"level":"info","ts":1611906418.8904865,"msg":"Web server started at 2021-01-29 14:46:58.8894884 +0700 +07 m=+0.027020301"}
+{"level":"info","ts":1611906422.8638074,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:46:58.8894884 +0700 +07 m=+0.027020301"}
+{"level":"info","ts":1611906597.4583232,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:46:58.8894884 +0700 +07 m=+0.027020301"}
+{"level":"info","ts":1611906620.6806488,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 14:46:58.8894884 +0700 +07 m=+0.027020301"}
+{"level":"error","ts":1611913581.9348402,"msg":"http: Server closed"}
+{"level":"warn","ts":1611913582.4353898,"msg":"Server has been shutdown at 2021-01-29 14:46:58.8894884 +0700 +07 m=+0.027020301"}
+{"level":"info","ts":1611914415.4745991,"msg":"Web server started at 2021-01-29 17:00:15.4736001 +0700 +07 m=+0.007005101"}
+{"level":"info","ts":1611914420.2463741,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 17:00:15.4736001 +0700 +07 m=+0.007005101"}
+{"level":"error","ts":1611914567.0604463,"msg":"http: Server closed"}
+{"level":"warn","ts":1611914567.0604463,"msg":"Server has been shutdown at 2021-01-29 17:00:15.4736001 +0700 +07 m=+0.007005101"}
+{"level":"info","ts":1611914571.0858183,"msg":"Web server started at 2021-01-29 17:02:51.0848177 +0700 +07 m=+0.005003401"}
+{"level":"info","ts":1611914596.4215488,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 17:02:51.0848177 +0700 +07 m=+0.005003401"}
+{"level":"error","ts":1611914648.5900507,"msg":"http: Server closed"}
+{"level":"warn","ts":1611914649.0897524,"msg":"Server has been shutdown at 2021-01-29 17:02:51.0848177 +0700 +07 m=+0.005003401"}
+{"level":"info","ts":1611914685.5211537,"msg":"Web server started at 2021-01-29 17:04:45.5201528 +0700 +07 m=+0.008005401"}
+{"level":"error","ts":1611914796.3852193,"msg":"http: Server closed"}
+{"level":"warn","ts":1611914796.8852894,"msg":"Server has been shutdown at 2021-01-29 17:04:45.5201528 +0700 +07 m=+0.008005401"}
+{"level":"info","ts":1611914801.0532413,"msg":"Web server started at 2021-01-29 17:06:41.0522406 +0700 +07 m=+0.007002101"}
+{"level":"info","ts":1611914819.9898953,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 17:06:41.0522406 +0700 +07 m=+0.007002101"}
+{"level":"error","ts":1611914867.4408417,"msg":"http: Server closed"}
+{"level":"warn","ts":1611914867.941806,"msg":"Server has been shutdown at 2021-01-29 17:06:41.0522406 +0700 +07 m=+0.007002101"}
+{"level":"info","ts":1611914876.4634328,"msg":"Web server started at 2021-01-29 17:07:56.4624302 +0700 +07 m=+0.025015901"}
+{"level":"info","ts":1611914894.565323,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 17:07:56.4624302 +0700 +07 m=+0.025015901"}
+{"level":"error","ts":1611914962.226195,"msg":"http: Server closed"}
+{"level":"warn","ts":1611914962.726534,"msg":"Server has been shutdown at 2021-01-29 17:07:56.4624302 +0700 +07 m=+0.025015901"}
+{"level":"info","ts":1611914966.8832343,"msg":"Web server started at 2021-01-29 17:09:26.8742277 +0700 +07 m=+0.005002901"}
+{"level":"info","ts":1611914975.0508525,"msg":"IP:/api/v1/user/uptUser/35:2021-01-29 17:09:26.8742277 +0700 +07 m=+0.005002901"}
+{"level":"error","ts":1611915066.1781795,"msg":"http: Server closed"}
+{"level":"warn","ts":1611915066.6788707,"msg":"Server has been shutdown at 2021-01-29 17:09:26.8742277 +0700 +07 m=+0.005002901"}
+{"level":"info","ts":1611915072.255604,"msg":"Web server started at 2021-01-29 17:11:12.2546015 +0700 +07 m=+0.020013001"}
+{"level":"error","ts":1611915188.670298,"msg":"http: Server closed"}
+{"level":"warn","ts":1611915189.1712086,"msg":"Server has been shutdown at 2021-01-29 17:11:12.2546015 +0700 +07 m=+0.020013001"}
+{"level":"info","ts":1611915193.7960367,"msg":"Web server started at 2021-01-29 17:13:13.7960367 +0700 +07 m=+0.043120101"}
+{"level":"error","ts":1611915708.6469624,"msg":"http: Server closed"}
+{"level":"warn","ts":1611915709.1469817,"msg":"Server has been shutdown at 2021-01-29 17:13:13.7960367 +0700 +07 m=+0.043120101"}
+{"level":"info","ts":1611915714.5210369,"msg":"Web server started at 2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611926263.867118,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611926365.236191,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611926417.6539462,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611926592.8189414,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611926619.6902423,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"info","ts":1611927025.0252934,"msg":"IP:/api/v1/user/getUser:2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}
+{"level":"error","ts":1611927172.3558512,"msg":"http: Server closed"}
+{"level":"warn","ts":1611927172.8599973,"msg":"Server has been shutdown at 2021-01-29 17:21:54.5200373 +0700 +07 m=+0.021017501"}

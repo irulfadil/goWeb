@@ -23,6 +23,7 @@ func MainRouters(r *mux.Router) {
 
 	// Router Dashboard
 	r.HandleFunc("/dashboard", Dashboard).Methods("GET")
+	// r.HandleFunc("/uptUser/{id:[0-9]+}", UpdateUser).Methods("PUT")
 }
 
 // contextData are the most widely use common variables for each pages to load.
@@ -33,7 +34,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/index.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
 	data := contextData{
-		"PageTitle":    "Login SIM",
+		"PageTitle":    "SIM",
 		"PageMetaDesc": config.SiteSlogan,
 		"CanonicalURL": r.RequestURI,
 		"CsrfToken":    csrf.Token(r),
@@ -47,7 +48,7 @@ func AccountSignup(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/account-sign-up.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
 	data := contextData{
-		"PageTitle":    "SignUp SIM",
+		"PageTitle":    "SIM",
 		"PageMetaDesc": config.SiteSlogan,
 		"CanonicalURL": r.RequestURI,
 		"CsrfToken":    csrf.Token(r),
@@ -61,7 +62,7 @@ func PasswordRecover(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"front/account-password-recover.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
 	data := contextData{
-		"PageTitle":    "Recover SIM",
+		"PageTitle":    "SIM",
 		"PageMetaDesc": config.SiteSlogan,
 		"CanonicalURL": r.RequestURI,
 		"CsrfToken":    csrf.Token(r),
@@ -90,7 +91,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(config.SiteRootTemplate+"dashboard/dashboard.html", config.SiteHeaderTemplate, config.SiteFooterTemplate))
 
 	data := contextData{
-		"PageTitle":    "Dashboard SIM",
+		"PageTitle":    "SIM",
 		"PageMetaDesc": config.SiteSlogan,
 		"CanonicalURL": r.RequestURI,
 		"CsrfToken":    csrf.Token(r),

@@ -4,7 +4,7 @@ import "time"
 
 // Users models is master list fo all your user table
 type Users struct {
-	ID          int64     `json:"id"`
+	ID          int       `json:"id"`
 	Username    string    `json:"username"`
 	Password    string    `json:"password"`
 	Email       string    `json:"email"`

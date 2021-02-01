@@ -81,7 +81,7 @@ func main() {
 		Handler:      r, // Pass our instance of gorilla/mux in.
 	}
 
-	// Run our server in a goroutine so that it doesn't block.
+	// Run server in a goroutine so that it doesn't block.
 	go func() {
 		msg := `Web server started at `
 		fmt.Println(msg, CurrentLocalTime)
